@@ -1,6 +1,6 @@
 Opened TS Playground and felt like a challenge (I'm sure it's been done before).
 
-Addition/multiplication from first principles in TypeScript types.
+Addition/multiplication with binary in TS types.
 
 ```ts
 // Gives squiglies if they don't match
