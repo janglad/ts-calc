@@ -1,16 +1,22 @@
 Opened TS Playground and felt like a challenge (I'm sure it's been done before).
 
-Addition/multiplication from first principles in TypeScript types.
+Addition/multiplication from first principles in TypeScript types. Seems to handle types into somewhere in the billions, lots of room for optimizations.
 
 ```ts
 // Gives squiglies if they don't match
-declare const byteEquals: <A extends Byte, B extends A>() => void;
+declare const byteEquals: <A extends readonly Bit[], B extends A>(
+  ...args: [A] extends [never]
+    ? ["A is never"]
+    : [B] extends [never]
+    ? ["B is never"]
+    : []
+) => void;
 
-byteEquals<Add<2, 5>, DecimalToBin<7>>();
-byteEquals<DecimalToBin<7>, Byte<0, 0, 0, 0, 0, 1, 1, 1>>();
-byteEquals<Multiply<2, 5>, DecimalToBin<10>>();
-byteEquals<DecimalToBin<10>, Byte<0, 0, 0, 0, 1, 0, 1, 0>>();
-byteEquals<Multiply<5, 0>, DecimalToBin<0>>();
-byteEquals<DecimalToBin<0>, Byte<0, 0, 0, 0, 0, 0, 0, 0>>();
-byteEquals<Multiply<50, 5>, DecimalToBin<250>>();
+byteEquals<
+  MultiplyBin<
+    AddBin<Multiply<100, 234>, DecimalToBin<10_000>>,
+    DecimalToBin<100_000>
+  >,
+  DecimalToBin<3_340_000_000>
+>();
 ```
