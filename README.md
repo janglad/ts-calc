@@ -1,6 +1,6 @@
 Opened TS Playground and felt like a challenge (I'm sure it's been done before).
 
-Addition/multiplication from first principles in TypeScript types. Seems to handle types into somewhere in the billions, lots of room for optimizations.
+Addition/multiplication with binary in TS types. Seems to handle types into somewhere in the billions, lots of room for optimizations.
 
 ```ts
 // Gives squiglies if they don't match
